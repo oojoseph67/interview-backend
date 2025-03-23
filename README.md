@@ -1,11 +1,12 @@
-# NFT Management REST API
+# REST API
 
 ## Description
 
-A REST API built with [Nest](https://github.com/nestjs/nest) framework for managing NFT (Non-Fungible Token) data. This API provides endpoints for:
-- Creating new NFT records
+A REST API built with [Nest](https://github.com/nestjs/nest) 
+<!-- framework for managing NFT (Non-Fungible Token) data. This API provides endpoints for: -->
+<!-- - Creating new NFT records
 - Retrieving NFTs by wallet address
-- Finding specific NFTs by ID
+- Finding specific NFTs by ID -->
 
 ## Documentation
 
@@ -65,13 +66,13 @@ $ pnpm run compodoc:serve
 
 ## Features
 
-- NFT Creation and Management
+<!-- - NFT Creation and Management
 - Wallet-based NFT Tracking
 - Input Validation
 - Swagger API Documentation
 - Compodoc Technical Documentation
 - TypeScript Support
-- Built with NestJS Framework
+- Built with NestJS Framework -->
 
 ## Stay in touch
 

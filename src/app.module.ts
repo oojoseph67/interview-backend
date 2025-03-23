@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AiModule } from './ai/ai.module';
 import databaseConfig from './config/database.config';
 import environmentValidation from './config/environmentValidation';
 
@@ -26,6 +27,8 @@ const ENV = process.env.NODE_ENV || 'development';
         useUnifiedTopology: true,
       }),
     }),
+
+    AiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
