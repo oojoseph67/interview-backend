@@ -1,0 +1,17 @@
+POST http://localhost:8888/ai/generate-questions/
+content-type: application/json
+
+{
+    "title": "Rome"
+}
+
+GET http://localhost:8888/ai/suggest-titles/
+content-type: application/json
+
+POST http://localhost:8888/ai/respond-to-question/
+content-type: application/json
+
+{
+    "surveyId": "67e25e0ace9b9340d0c8829c",
+    "answers": ["dkjsf", "rome", "aefjh", "errew", "324"]
+}

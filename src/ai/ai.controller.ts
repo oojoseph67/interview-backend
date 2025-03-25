@@ -16,14 +16,19 @@ import { CreateAiSurveyDto } from './dto/create-ai-survey.dto';
 export class AiController {
   constructor(private readonly aiService: AiService) {}
 
-  @Post()
-  create(@Body() createAiDto: CreateAiSurveyDto) {
-    return this.aiService.create(createAiDto);
+  @Post('generate-questions')
+  generateQuestions(@Body() createAiDto: CreateAiSurveyDto) {
+    return this.aiService.generateQuestions(createAiDto);
   }
 
-  @Get()
-  findAll() {
-    return this.aiService.findAll();
+  @Post('respond-to-question')
+  respondToQuestion(@Body() createAiResponseDto: CreateAiResponseDto) {
+    return this.aiService.respondToQuestion(createAiResponseDto);
+  }
+
+  @Get('suggest-titles')
+  async suggestTitles() {
+    return await this.aiService.suggestTitles();
   }
 
   @Get(':id')

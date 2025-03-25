@@ -7,4 +7,6 @@ export default Joi.object({
   MONGODB_URI: Joi.string().required(),
   PORT: Joi.number().default(8888),
   HOST: Joi.string().default('0.0.0.0'),
+  OPEN_AI_API_KEY: Joi.string().required(),
+  CLAUDE_AI_API_KEY: Joi.string().required(),
 });

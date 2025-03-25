@@ -6,6 +6,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AiSurvey } from './entities/ai-survey.entity';
 import { AiResponse } from './entities/ai-response.entity';
+import { GenerateQuestions } from './generate-questions/generate-questions';
 
 @Injectable()
 export class AiService {
@@ -15,10 +16,42 @@ export class AiService {
 
     @InjectModel(AiResponse.name)
     private readonly aiResponseModel: Model<AiResponse>,
+
+    private generateQuestionsProvider: GenerateQuestions,
   ) {}
 
-  create(createAiDto: CreateAiSurveyDto) {
-    return 'This action adds a new ai';
+  async generateQuestions(createAiDto: CreateAiSurveyDto): Promise<string[]> {
+    // generating questions
+    const questions = await this.generateQuestionsProvider.generateQuestions({
+      title: createAiDto.title,
+    });
+
+    // saving the survey
+    const aiSurvey = new this.aiSurveyModel({
+      title: createAiDto.title,
+      questions,
+    });
+    console.log({ aiSurvey });
+    await aiSurvey.save();
+
+    return questions;
+  }
+
+  async suggestTitles(): Promise<string[]> {
+    return await this.generateQuestionsProvider.suggestTitles();
+  }
+
+  async respondToQuestion(respondToQuestion: CreateAiResponseDto) {
+    const aiResponse = new this.aiResponseModel(respondToQuestion);
+    await aiResponse.save();
+
+    const aiSurvey = await this.aiSurveyModel.findById(
+      respondToQuestion.surveyId,
+    );
+    aiSurvey.responses.push(aiResponse);
+    await aiSurvey.save();
+
+    return aiResponse;
   }
 
   findAll() {
