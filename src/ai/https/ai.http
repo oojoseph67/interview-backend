@@ -1,5 +1,6 @@
 POST http://localhost:8888/ai/generate-questions/
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2UyN2ZhNDU1ZDJmZTdlYTc2OWRmYTIiLCJlbWFpbCI6Im9vam9zZXBoNjdAZ21haWwuY29tIiwiaWF0IjoxNzQyODk3MDYyLCJleHAiOjE3NDI5MDA2NjIsImF1ZCI6ImxvY2FsaG9zdDo3MjMxIiwiaXNzIjoibG9jYWxob3N0OjcyMzEifQ.z0BzsFQOfMi8qugg3JTzg1jQwS3sCTz75aWBvChBILo
 
 {
     "title": "Rome"

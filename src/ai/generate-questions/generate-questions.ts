@@ -27,8 +27,6 @@ export class GenerateQuestions {
         max_tokens: 1024,
         messages: [{ role: 'user', content: prompt }],
       });
-      console.log({ response });
-      console.log({ content: response.content });
 
       const content =
         response.content[0].type === 'text' ? response.content[0].text : '';

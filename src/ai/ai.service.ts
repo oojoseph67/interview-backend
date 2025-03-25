@@ -37,7 +37,6 @@ export class AiService {
       title: createAiDto.title,
       questions,
     });
-    console.log({ aiSurvey });
     await aiSurvey.save();
 
     return questions;

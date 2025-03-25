@@ -17,9 +17,9 @@ export class User extends Document {
 
   @Prop({
     type: String,
-    required: true,
+    default: '',
   })
-  lastName: string;
+  lastName?: string;
 
   @Prop({
     type: String,
