@@ -21,10 +21,7 @@ export class AiService {
     private generateQuestionsProvider: GenerateQuestions,
   ) {}
 
-  async generateQuestions(
-    createAiDto: CreateAiSurveyDto,
-    user: UserPayload,
-  ): Promise<string[]> {
+  async generateQuestions(createAiDto: CreateAiSurveyDto, user: UserPayload) {
     console.log({ user });
 
     // generating questions
@@ -40,7 +37,7 @@ export class AiService {
     });
     await aiSurvey.save();
 
-    return questions;
+    return { questions, surveyId: aiSurvey._id };
   }
 
   async suggestTitles(): Promise<string[]> {
