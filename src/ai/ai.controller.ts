@@ -28,8 +28,11 @@ export class AiController {
   }
 
   @Post('respond-to-question')
-  respondToQuestion(@Body() createAiResponseDto: CreateAiResponseDto) {
-    return this.aiService.respondToQuestion(createAiResponseDto);
+  respondToQuestion(
+    @Body() createAiResponseDto: CreateAiResponseDto,
+    @ActiveUser() user: UserPayload,
+  ) {
+    return this.aiService.respondToQuestion(createAiResponseDto, user);
   }
 
   @Get('suggest-titles')
@@ -37,18 +40,18 @@ export class AiController {
     return await this.aiService.suggestTitles();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.aiService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.aiService.findOne(+id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAiDto: UpdateAiSurveyDto) {
-    return this.aiService.update(+id, updateAiDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateAiDto: UpdateAiSurveyDto) {
+  //   return this.aiService.update(+id, updateAiDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.aiService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.aiService.remove(+id);
+  // }
 }

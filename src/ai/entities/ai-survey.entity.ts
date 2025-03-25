@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, HydratedDocument, Schema as MongooseSchema } from 'mongoose';
 import { AiResponse } from './ai-response.entity';
+import { User } from 'src/auth/entities/user.entity';
 
 @Schema()
 export class AiSurvey extends Document {
@@ -15,6 +16,11 @@ export class AiSurvey extends Document {
     required: true,
   })
   questions: string[];
+
+  @Prop({
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'User' }],
+  })
+  userId: User;
 
   @Prop({
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'AiResponse' }],

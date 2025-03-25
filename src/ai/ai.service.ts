@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateAiResponseDto } from './dto/create-ai-response.dto';
 import { CreateAiSurveyDto } from './dto/create-ai-survey.dto';
 import { UpdateAiResponseDto, UpdateAiSurveyDto } from './dto/update-ai.dto';
@@ -35,6 +35,7 @@ export class AiService {
     // saving the survey
     const aiSurvey = new this.aiSurveyModel({
       title: createAiDto.title,
+      userId: user.sub,
       questions,
     });
     await aiSurvey.save();
@@ -46,32 +47,42 @@ export class AiService {
     return await this.generateQuestionsProvider.suggestTitles();
   }
 
-  async respondToQuestion(respondToQuestion: CreateAiResponseDto) {
-    const aiResponse = new this.aiResponseModel(respondToQuestion);
-    await aiResponse.save();
-
+  async respondToQuestion(
+    respondToQuestion: CreateAiResponseDto,
+    user: UserPayload,
+  ) {
     const aiSurvey = await this.aiSurveyModel.findById(
       respondToQuestion.surveyId,
     );
+
+    if (aiSurvey.userId.toString() !== user.sub.toString()) {
+      throw new HttpException(
+        'This Survey doesnt belong to you',
+        HttpStatus.UNAUTHORIZED,
+      );
+    }
+
+    const aiResponse = new this.aiResponseModel(respondToQuestion);
+    await aiResponse.save();
     aiSurvey.responses.push(aiResponse);
     await aiSurvey.save();
 
     return aiResponse;
   }
 
-  findAll() {
-    return `This action returns all ai`;
-  }
+  // findAll() {
+  //   return `This action returns all ai`;
+  // }
 
-  findOne(id: number) {
-    return `This action returns a #${id} ai`;
-  }
+  // findOne(id: number) {
+  //   return `This action returns a #${id} ai`;
+  // }
 
-  update(id: number, updateAiDto: UpdateAiSurveyDto) {
-    return `This action updates a #${id} ai`;
-  }
+  // update(id: number, updateAiDto: UpdateAiSurveyDto) {
+  //   return `This action updates a #${id} ai`;
+  // }
 
-  remove(id: number) {
-    return `This action removes a #${id} ai`;
-  }
+  // remove(id: number) {
+  //   return `This action removes a #${id} ai`;
+  // }
 }

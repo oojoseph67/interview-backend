@@ -3,16 +3,18 @@ content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2UyN2ZhNDU1ZDJmZTdlYTc2OWRmYTIiLCJlbWFpbCI6Im9vam9zZXBoNjdAZ21haWwuY29tIiwiaWF0IjoxNzQyODk3MDYyLCJleHAiOjE3NDI5MDA2NjIsImF1ZCI6ImxvY2FsaG9zdDo3MjMxIiwiaXNzIjoibG9jYWxob3N0OjcyMzEifQ.z0BzsFQOfMi8qugg3JTzg1jQwS3sCTz75aWBvChBILo
 
 {
-    "title": "Rome"
+    "title": "Music"
 }
 
 GET http://localhost:8888/ai/suggest-titles/
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2UyN2ZhNDU1ZDJmZTdlYTc2OWRmYTIiLCJlbWFpbCI6Im9vam9zZXBoNjdAZ21haWwuY29tIiwiaWF0IjoxNzQyODk3MDYyLCJleHAiOjE3NDI5MDA2NjIsImF1ZCI6ImxvY2FsaG9zdDo3MjMxIiwiaXNzIjoibG9jYWxob3N0OjcyMzEifQ.z0BzsFQOfMi8qugg3JTzg1jQwS3sCTz75aWBvChBILo
 
 POST http://localhost:8888/ai/respond-to-question/
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2UyN2ZhNDU1ZDJmZTdlYTc2OWRmYTIiLCJlbWFpbCI6Im9vam9zZXBoNjdAZ21haWwuY29tIiwiaWF0IjoxNzQyODk3MDYyLCJleHAiOjE3NDI5MDA2NjIsImF1ZCI6ImxvY2FsaG9zdDo3MjMxIiwiaXNzIjoibG9jYWxob3N0OjcyMzEifQ.z0BzsFQOfMi8qugg3JTzg1jQwS3sCTz75aWBvChBILo
 
 {
-    "surveyId": "67e25e0ace9b9340d0c8829c",
+    "surveyId": "67e284802135cf3e00ad0504",
     "answers": ["dkjsf", "rome", "aefjh", "errew", "324"]
 }

@@ -23,7 +23,12 @@ async function bootstrap() {
     .setVersion('1.0')
     .setTitle('INTERVIEW API')
     .setDescription(
-      '',
+      'A REST API for managing AI-powered surveys and responses. This API provides endpoints for:\n' +
+      '- Generating AI-powered survey questions\n' +
+      '- Responding to survey questions\n' +
+      '- Getting AI-suggested survey titles\n' +
+      '- Google Authentication\n\n' +
+      'The API uses JWT for authentication and includes comprehensive input validation.'
     )
     .setTermsOfService('https://example.com/terms')
     .setLicense(
