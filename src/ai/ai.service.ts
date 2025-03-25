@@ -7,6 +7,7 @@ import { Model } from 'mongoose';
 import { AiSurvey } from './entities/ai-survey.entity';
 import { AiResponse } from './entities/ai-response.entity';
 import { GenerateQuestions } from './generate-questions/generate-questions';
+import { UserPayload } from 'src/auth/guards/access-token/access-token.guard';
 
 @Injectable()
 export class AiService {
@@ -20,7 +21,12 @@ export class AiService {
     private generateQuestionsProvider: GenerateQuestions,
   ) {}
 
-  async generateQuestions(createAiDto: CreateAiSurveyDto): Promise<string[]> {
+  async generateQuestions(
+    createAiDto: CreateAiSurveyDto,
+    user: UserPayload,
+  ): Promise<string[]> {
+    console.log({ user });
+
     // generating questions
     const questions = await this.generateQuestionsProvider.generateQuestions({
       title: createAiDto.title,

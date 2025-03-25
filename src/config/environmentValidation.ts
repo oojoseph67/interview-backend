@@ -9,4 +9,7 @@ export default Joi.object({
   HOST: Joi.string().default('0.0.0.0'),
   OPEN_AI_API_KEY: Joi.string().required(),
   CLAUDE_AI_API_KEY: Joi.string().required(),
+  GOOGLE_CLIENT_ID: Joi.string().required(),
+  GOOGLE_CLIENT_SECRET_KEY: Joi.string().required(),
+  GOOGLE_REDIRECT_URI: Joi.string().required(),
 });
