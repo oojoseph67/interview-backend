@@ -36,7 +36,7 @@ async function bootstrap() {
       'https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt',
     )
     .addServer('http://localhost:8888', 'Development Server')
-    .addServer('', 'Production Server')
+    .addServer('https://interview-backend-zswx.onrender.com', 'Production Server')
     .addBearerAuth({
       type: 'http',
       name: 'Authorization',
